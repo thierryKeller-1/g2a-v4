@@ -66,12 +66,9 @@ class IP_Timer(object):
         global ACTIVATION_COMMAND
         if platform.system().lower() == 'windows':
             print("\n\t It's time to change IP, please do It then press enter")
-            
-
         else:
             print('\n\t desctivation ... ')
             print("\t " + DESCATIVATE_COMMAND)
-            time.sleep(1)
             try:
                 subprocess.run(shlex.split(DESCATIVATE_COMMAND), check=True)
             except supprocess.CalledProcessError as e:
