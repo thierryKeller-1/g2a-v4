@@ -70,18 +70,18 @@ class IP_Timer(object):
             print('\n\t desctivation ... ')
             print("\t " + DESCATIVATE_COMMAND)
             try:
-                print(f"\t ===> connexion status: {get_status()}")
                 subprocess.run(shlex.split(DESCATIVATE_COMMAND), check=True)
                 set_status(key='STATUS', value='desactivated')
+                print(f"\t ===> connexion status: {get_status()}")
             except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
             print('\t activation ... ')
             print("\t " + ACTIVATION_COMMAND)
             time.sleep(.5)
             try:
-                print(f"\t ==> connexion status: {get_status()}")
                 subprocess.run(shlex.split(ACTIVATION_COMMAND), check=True)
                 set_status(key='STATUS', value='activated')
+                print(f"\t ==> connexion status: {get_status()}")
             except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
 
