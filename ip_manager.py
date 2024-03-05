@@ -76,15 +76,17 @@ class IP_Timer(object):
             print('\n\t desctivation ... ')
             print("\t " + DESCATIVATE_COMMAND)
             time.sleep(1)
-            process1 = subprocess.Popen(shlex.split(DESCATIVATE_COMMAND), stdout=subprocess.PIPE, shell=True)
-            output1, error1 = process1.communicate()
-            print(output1)
+            try:
+                subprocess.run(shlex.split(DESCATIVATE_COMMAND), check=True)
+            except supprocess.CalledProcessError as e:
+                print(f"\t ===> error {e}")
             print('\t activation ... ')
             print("\t " + ACTIVATION_COMMAND)
-            time.sleep(1)
-            process2 = subprocess.Popen(shlex.split(ACTIVATION_COMMAND), stdout=subprocess.PIPE, shell=True)
-            output2, error2 = process2.communicate()
-            print(output2, end='\r')
+            time.sleep(.5)
+            try:
+                subprocess.run(shlex.split(ACTIVATION_COMMAND), check=True)
+            except supprocess.CalledProcessError as e:
+                print(f"\t ===> error {e}")
 
     def run(self) -> None:
         print(" $ starting ... ")
