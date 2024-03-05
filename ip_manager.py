@@ -101,13 +101,9 @@ class IP_Timer(object):
 
 
 def main_arguments() -> object:
-
-    def get_monday():
-        return str((datetime.now() - timedelta(days = datetime.now().weekday())).strftime("%d/%m/%Y"))
-
     parser = argparse.ArgumentParser(description="IP manager program", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--action', '-a', dest='action', default='',help="")
-    parser.add_argument('--duration', '-t', dest='duration', default='5', help="time cycle duration for each new IP")
+    parser.add_argument('--duration', '-d', dest='duration', default='5', help="time cycle duration for each new IP")
     parser.add_argument('--unit', '-u', dest='unit', default='s', help="unit of time [s for second m for minute and h for hour]")
     return parser.parse_args()
 
