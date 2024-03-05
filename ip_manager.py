@@ -11,7 +11,7 @@ from datetime import timedelta
 from colorama import just_fix_windows_console, Fore
 from toolkits.logger import show_message
 from toolkits.constants import CONNEXION_ID
-
+from toolkits.ip_status_manager import set_status, get_status
 
 DESCATIVATE_COMMAND = f"sudo nmcli conn down {CONNEXION_ID}"
 ACTIVATION_COMMAND = f"sudo nmcli conn up {CONNEXION_ID}"
@@ -70,14 +70,18 @@ class IP_Timer(object):
             print('\n\t desctivation ... ')
             print("\t " + DESCATIVATE_COMMAND)
             try:
+                print(f"\t ===> connexion status: {get_status()}")
                 subprocess.run(shlex.split(DESCATIVATE_COMMAND), check=True)
+                set_status(key='STATUS', value='desactivated')
             except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
             print('\t activation ... ')
             print("\t " + ACTIVATION_COMMAND)
             time.sleep(.5)
             try:
+                print(f"\t ==> connexion status: {get_status()}")
                 subprocess.run(shlex.split(ACTIVATION_COMMAND), check=True)
+                set_status(key='STATUS', value='activated')
             except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
 
