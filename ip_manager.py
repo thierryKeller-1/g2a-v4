@@ -10,13 +10,9 @@ import keyboard
 from datetime import timedelta
 from colorama import just_fix_windows_console, Fore
 from toolkits.logger import show_message
-from dotenv import load_dotenv
+from toolkits.constants import CONNEXION_ID
 
 
-load_dotenv()
-
-
-CONNECTION_ID = os.environ.get("CONNECTION_ID")
 DESCATIVATE_COMMAND = f"sudo nmcli conn down {CONNECTION_ID}"
 ACTIVATION_COMMAND = f"sudo nmcli conn up {CONNECTION_ID}"
 
