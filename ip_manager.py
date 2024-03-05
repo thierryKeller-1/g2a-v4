@@ -13,8 +13,8 @@ from toolkits.logger import show_message
 from toolkits.constants import CONNEXION_ID
 
 
-DESCATIVATE_COMMAND = f"sudo nmcli conn down {CONNECTION_ID}"
-ACTIVATION_COMMAND = f"sudo nmcli conn up {CONNECTION_ID}"
+DESCATIVATE_COMMAND = f"sudo nmcli conn down {CONNEXION_ID}"
+ACTIVATION_COMMAND = f"sudo nmcli conn up {CONNEXION_ID}"
 
 if platform.system().lower() == 'windows':
     just_fix_windows_console()
