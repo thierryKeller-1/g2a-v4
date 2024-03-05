@@ -54,6 +54,7 @@ class BaseScraping(object):
             pass
         self.driver = webdriver.Chrome(options=self.chrome_options)
         self.driver.maximize_window()
+        self.driver.set_window_position(-1000,0)
         self.driver_cycle = 0
 
     def check_ip_status(self) -> None:
