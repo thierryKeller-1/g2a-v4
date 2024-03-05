@@ -11,6 +11,7 @@ OUTPUT_FOLDER_PATH = os.environ.get("OUTPUT_FOLDER_PATH")
 BUG_FOLDER_PATH = os.environ.get("BUG_FOLDER_PATH")
 G2A_API_URL = os.environ.get("G2A_API_URL")
 G2A_API_TOKEN = os.environ.get("G2A_API_TOKEN")
+CONNEXION_ID = os.environ.get("CONNEXION_ID")
 
 
 
