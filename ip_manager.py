@@ -71,14 +71,14 @@ class IP_Timer(object):
             print("\t " + DESCATIVATE_COMMAND)
             try:
                 subprocess.run(shlex.split(DESCATIVATE_COMMAND), check=True)
-            except supprocess.CalledProcessError as e:
+            except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
             print('\t activation ... ')
             print("\t " + ACTIVATION_COMMAND)
             time.sleep(.5)
             try:
                 subprocess.run(shlex.split(ACTIVATION_COMMAND), check=True)
-            except supprocess.CalledProcessError as e:
+            except subprocess.CalledProcessError as e:
                 print(f"\t ===> error {e}")
 
     def run(self) -> None:
