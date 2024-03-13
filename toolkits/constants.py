@@ -14,8 +14,6 @@ G2A_API_TOKEN = os.environ.get("G2A_API_TOKEN")
 PROTONVPN_CONNEXION_ID = os.environ.get("PROTONVPN_CONNEXION_ID")
 NORDVPN_CONNEXION_ID = os.environ.get("NORDVPN_CONNEXION_ID")
 
-
-
 BOOKING_CSV_FIELDS = [
     "web-scrapper-order",
     ""
