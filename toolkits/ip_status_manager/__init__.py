@@ -9,7 +9,7 @@ def get_status(key:str=None) -> dict:
     global IP_STATUS_FILE
     if key:
         status = await asyncio.run(async_read_json_file(IP_STATUS_FILE, key))
-       return satus
+        return satus
     status = await asyncio.run(async_read_json_file(IP_STATUS_FILE))
     return status
 
