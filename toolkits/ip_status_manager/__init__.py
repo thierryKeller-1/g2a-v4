@@ -1,5 +1,6 @@
 from toolkits.constants import PROJECT_FOLDER_PATH
-from toolkits.file_manager import read_json_file, write_json_file
+from toolkits.file_manager import async_read_json_file, write_json_file
+import asyncio
 
 
 IP_STATUS_FILE = f"{PROJECT_FOLDER_PATH}/configs/ip_status.json"
@@ -7,8 +8,10 @@ IP_STATUS_FILE = f"{PROJECT_FOLDER_PATH}/configs/ip_status.json"
 def get_status(key:str=None) -> dict:
     global IP_STATUS_FILE
     if key:
-       return read_json_file(IP_STATUS_FILE, key)
-    return read_json_file(IP_STATUS_FILE)
+        status = await asyncio.run(async_read_json_file(IP_STATUS_FILE, key))
+       return satus
+    status = await asyncio.run(async_read_json_file(IP_STATUS_FILE))
+    return status
 
 def set_status(key:str, value:object) -> None:
     global IP_STATUS_FILE
