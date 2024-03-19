@@ -7,7 +7,6 @@ import asyncio
 
 IP_STATUS_FILE = f"{PROJECT_FOLDER_PATH}/configs/ip_status.json"
 
-@async_to_sync
 async def get_status(key:str=None) -> dict:
     global IP_STATUS_FILE
     if key:
