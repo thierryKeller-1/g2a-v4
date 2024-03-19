@@ -8,8 +8,9 @@ from asgiref.sync import async_to_sync
 @async_to_sync
 async def async_read_json_file(json_file_path, key:str=None) -> object:
     try:
-        async with await aiofiles.open(json_file_path, 'r') as openfile:
-            json_object = json.loads(openfile)
+        async with await aiofiles.open(json_file_path) as openfile:
+            content = await openfile.read()
+            json_object = await json.loads(content)
             if key:
                 return json_object[key]
             return json_object
