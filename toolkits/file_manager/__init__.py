@@ -6,7 +6,7 @@ import aiofiles
 from asgiref.sync import async_to_sync
 
 @async_to_sync
-async def async_read_json_file(json_file_path:str, key:str=None) -> object:
+async def async_read_json_file(json_file_path, key:str=None) -> object:
     try:
         async with aiofiles.open(json_file_path, 'r') as openfile:
             file_content = await openfile.read()
