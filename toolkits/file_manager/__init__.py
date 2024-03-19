@@ -17,7 +17,7 @@ async def async_read_json_file(json_file_path, key:str=None) -> object:
     except FileNotFoundError:
         print("\t File not found")
         
-def read_json_file(json_file_path:str, key:str=None) -> object:
+def read_json_file(json_file_path, key:str=None) -> object:
     try:
         with aiofiles.open(json_file_path, 'r', encoding='utf-8') as openfile:
             json_object = json.load(openfile)
