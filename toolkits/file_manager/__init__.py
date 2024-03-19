@@ -3,7 +3,9 @@ import csv
 from pathlib import Path
 import os
 import aiofiles
+from asgiref.sync import async_to_sync
 
+@async_to_sync
 async def read_json_file(json_file_path:str, key:str=None) -> object:
     try:
         async with aiofiles.open(json_file_path, 'r', encoding='utf-8') as openfile:
