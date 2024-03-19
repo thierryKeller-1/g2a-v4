@@ -19,7 +19,7 @@ async def async_read_json_file(json_file_path, key:str=None) -> object:
         
 def read_json_file(json_file_path, key:str=None) -> object:
     try:
-        with aiofiles.open(json_file_path, 'r', encoding='utf-8') as openfile:
+        with open(json_file_path, 'r', encoding='utf-8') as openfile:
             json_object = json.load(openfile)
             if key:
                 return json_object[key]
