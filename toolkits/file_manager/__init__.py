@@ -2,11 +2,12 @@ import json
 import csv
 from pathlib import Path
 import os
+import aiofiles
 
-def read_json_file(json_file_path:str, key:str=None) -> object:
+async def read_json_file(json_file_path:str, key:str=None) -> object:
     try:
-        with open(json_file_path, 'r', encoding='utf-8') as openfile:
-            json_object = json.load(openfile)
+        async with aiofiles.open(json_file_path, 'r', encoding='utf-8') as openfile:
+            json_object = json.load(await openfile)
             if key:
                 return json_object[key]
             return json_object
