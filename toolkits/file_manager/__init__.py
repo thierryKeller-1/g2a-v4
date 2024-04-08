@@ -2,8 +2,22 @@ import json
 import csv
 from pathlib import Path
 import os
+import aiofiles
+from asgiref.sync import async_to_sync
 
-def read_json_file(json_file_path:str, key:str=None) -> object:
+@async_to_sync
+async def async_read_json_file(json_file_path, key:str=None) -> object:
+    try:
+        async with await aiofiles.open(json_file_path) as openfile:
+            content = await openfile.read()
+            json_object = await json.loads(content)
+            if key:
+                return json_object[key]
+            return json_object
+    except FileNotFoundError:
+        print("\t File not found")
+        
+def read_json_file(json_file_path, key:str=None) -> object:
     try:
         with open(json_file_path, 'r', encoding='utf-8') as openfile:
             json_object = json.load(openfile)
