@@ -1,12 +1,10 @@
 import argparse
-import datetime
 import subprocess
 import platform
 import time
 import sys
 import os
 import shlex
-import keyboard
 from datetime import timedelta
 from colorama import just_fix_windows_console, Fore
 from toolkits.logger import show_message
@@ -21,6 +19,9 @@ CITIES = {
 }
 
 
+ORIGIN = ['prontonvpn', 'nordvpn']
+
+
 if platform.system().lower() == 'windows':
     just_fix_windows_console()
 
@@ -33,6 +34,20 @@ class IP_Timer(object):
         self.city = city.lower()
         self.time_types = ['s', 'm', 'h']
         self.countdown_time = 0
+
+    def set_origin(self, new_origin:str) -> None:
+        global ORIGIN
+        if new_origin in ORIGIN:
+            self.origin = new_origin
+        else:
+            print(f"\t ==> provider {new_origin} not registered")
+
+    def set_city(self, new_city:str) -> None:
+        global CITIES
+        if new_city in CITIES.keys():
+            self.city = new_city
+        else:
+            print(f"\t ==> city {new_city} not registered")
 
     def params_is_valide(self) -> bool:
         if self.time_type not in self.time_types:
@@ -84,6 +99,17 @@ class IP_Timer(object):
 
     def reset_time(self) -> None:
         self.time_rest = self.countdown_time
+
+    def force_ip_rotation(self, city:str='france', origin:str='protonvpn') -> None:
+        global CITIES
+        global ORIGIN
+        if city.lower() in CITIES.keys() and origin.lower() in ORIGIN:
+            self.set_city(city)
+            self.set_origin(origin)
+            self.launch_command()
+            pass
+        else:
+            print(f"\t ==> city {city} not registered")
 
     def launch_command(self) -> None:
         activation_cmd, desactivation_cmd = self.get_command()
