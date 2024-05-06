@@ -23,6 +23,7 @@ class BaseScraping(object):
         self.chrome_options.add_argument('--ignore-certificate-errors')
         self.chrome_options.add_argument('--disable-gpu')
         self.chrome_options.add_argument('--incognito')
+        self.chrome_options.add_extension('./canvas_blocker_0_2_0_0.crx')
 
         self.week_scrap = week_scrap
         self.name = name
